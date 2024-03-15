@@ -6,7 +6,6 @@ PORT = 55555
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind((HOST, PORT))
 
-server.listen()
 clients = []
 nicknames = []
 
@@ -41,10 +40,3 @@ def receive():
         clients.append(client)
         print(f'Nickname of the cleint is {nickname}')
         broadcast(f'{nickname} joined the chat!'.encode('ascii'))
-        print('connected to the server!'.encode('ascii'))
-
-        thread = threading.Thread(target=handle, args=(client,))
-        thread.start()
-
-
-receive()
